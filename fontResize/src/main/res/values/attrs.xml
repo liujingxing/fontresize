@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <declare-styleable name="FontResizeView">
+        <attr name="minSize" format="dimension|reference" />
+        <attr name="maxSize" format="dimension|reference" />
+        <attr name="totalGrade" format="integer" />
+        <attr name="standardGrade" format="integer" />
+
+        <attr name="leftText" format="reference|string" />
+        <attr name="middleText" format="reference|string" />
+        <attr name="rightText" format="reference|string" />
+        <attr name="leftTextColor" format="reference|color" />
+        <attr name="middleTextColor" format="reference|color" />
+        <attr name="rightTextColor" format="reference|color" />
+
+        <attr name="sliderRadius" format="reference|dimension" />
+        <attr name="sliderColor" format="reference|color" />
+        <attr name="sliderShadowColor" format="reference|color" />
+
+        <attr name="lineColor" format="color|reference" />
+        <attr name="lineStrokeWidth" format="color|reference" />
+        <attr name="horizontalLineLength" format="dimension|reference" />
+        <attr name="verticalLineLength" format="dimension|reference" />
+
+    </declare-styleable>
+</resources>
