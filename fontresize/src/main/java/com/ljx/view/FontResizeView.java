@@ -1,4 +1,4 @@
-package com.view.fontresize;
+package com.ljx.view;
 
 import android.animation.Animator;
 import android.animation.AnimatorListenerAdapter;
@@ -15,6 +15,8 @@ import android.view.GestureDetector;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.animation.AccelerateDecelerateInterpolator;
+
+import com.ljx.view.fontresize.R;
 
 /**
  * 字体大小调整控件

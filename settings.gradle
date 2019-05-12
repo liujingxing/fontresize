@@ -1,1 +1,1 @@
-include ':app', ':fontResize'
+include ':app', ':fontresize'
