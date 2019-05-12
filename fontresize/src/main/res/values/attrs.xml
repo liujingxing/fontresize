@@ -1,26 +1,26 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <declare-styleable name="FontResizeView">
-        <attr name="minSize" format="reference|dimension" />
-        <attr name="maxSize" format="reference|dimension" />
-        <attr name="totalGrade" format="integer" />
-        <attr name="standardGrade" format="integer" />
+<declare-styleable name="FontResizeView">
+    <attr name="minSize" format="reference|dimension" /> <!--最小size-->
+    <attr name="maxSize" format="reference|dimension" /> <!--最大size-->
+    <attr name="totalGrade" format="integer" />   <!--可调整的等级、即总的等级-->
+    <attr name="standardGrade" format="integer" />  <!--标准等级-->
 
-        <attr name="leftText" format="reference|string" />
-        <attr name="middleText" format="reference|string" />
-        <attr name="rightText" format="reference|string" />
-        <attr name="leftTextColor" format="reference|color" />
-        <attr name="middleTextColor" format="reference|color" />
-        <attr name="rightTextColor" format="reference|color" />
+    <attr name="leftText" format="reference|string" />  <!--左边文本，默认为 'A'-->
+    <attr name="middleText" format="reference|string" />  <!--中间文本，默认为 '标准'-->
+    <attr name="rightText" format="reference|string" />  <!--右边文本，默认为 'A'-->
+    <attr name="leftTextColor" format="reference|color" />  <!--左边文本颜色，默认为全黑-->
+    <attr name="middleTextColor" format="reference|color" />  <!--中间文本颜色，默认为全黑-->
+    <attr name="rightTextColor" format="reference|color" />  <!--右边文本颜色，默认为全黑-->
 
-        <attr name="sliderRadius" format="reference|dimension" />
-        <attr name="sliderColor" format="reference|color" />
-        <attr name="sliderShadowColor" format="reference|color" />
+    <attr name="sliderRadius" format="reference|dimension" />  <!--滑块半径-->
+    <attr name="sliderColor" format="reference|color" />  <!--滑块颜色-->
+    <attr name="sliderShadowColor" format="reference|color" />  <!--滑块边缘阴影颜色-->
 
-        <attr name="lineColor" format="reference|color" />
-        <attr name="lineStrokeWidth" format="reference|dimension" />
-        <attr name="horizontalLineLength" format="reference|dimension" />
-        <attr name="verticalLineLength" format="reference|dimension" />
+    <attr name="lineColor" format="reference|color" />  <!--线条颜色-->
+    <attr name="lineStrokeWidth" format="reference|dimension" />  <!--线条宽度，即粗细程度-->
+    <attr name="horizontalLineLength" format="reference|dimension" />  <!--横向线条长度-->
+    <attr name="verticalLineLength" format="reference|dimension" />  <!--纵向线条长度-->
 
-    </declare-styleable>
+</declare-styleable>
 </resources>
