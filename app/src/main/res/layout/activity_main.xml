@@ -31,4 +31,30 @@
         app:standardGrade="2"
         app:totalGrade="7" />
 
+    <!--<com.ljx.view.FontResizeView-->
+        <!--android:id="@+id/font_resize_view"-->
+        <!--android:layout_width="0dp"-->
+        <!--android:layout_height="140dp"-->
+        <!--android:background="@android:color/white"-->
+        <!--app:horizontalLineLength="300dp"-->
+        <!--app:layout_constraintBottom_toBottomOf="parent"-->
+        <!--app:layout_constraintLeft_toLeftOf="parent"-->
+        <!--app:layout_constraintRight_toRightOf="parent"-->
+        <!--app:leftText="AA"-->
+        <!--app:leftTextColor="#FF0000"-->
+        <!--app:lineColor="#009999"-->
+        <!--app:lineStrokeWidth="2dp"-->
+        <!--app:maxSize="31sp"-->
+        <!--app:minSize="15sp"-->
+        <!--app:middleText="标准1"-->
+        <!--app:middleTextColor="#00FF00"-->
+        <!--app:rightText="AAA"-->
+        <!--app:rightTextColor="#0000ff"-->
+        <!--app:sliderColor="@android:color/white"-->
+        <!--app:sliderRadius="13dp"-->
+        <!--app:sliderShadowColor="#FF0000"-->
+        <!--app:standardGrade="3"-->
+        <!--app:totalGrade="9"-->
+        <!--app:verticalLineLength="15dp" />-->
+
 </android.support.constraint.ConstraintLayout>
