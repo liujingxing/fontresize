@@ -28,7 +28,8 @@ public class FontResizeView extends View {
 
     //默认线条颜色
     private static final int DEFAULT_LINE_COLOR = Color.parseColor("#222222");
-    boolean isCoincide;//是否重合
+
+    private boolean isCoincide;//是否重合
 
     private int width, height;//FontAdjustView的宽高
     private float minSize;//最小字体大小
@@ -43,9 +44,9 @@ public class FontResizeView extends View {
     private int middleTextColor;   //中间文本颜色
     private int rightTextColor;    //右边文本颜色
 
-    private int totalGrade;//总的等级
-    private int standardGrade;//标准等级
-    private int lineColor; //线条颜色
+    private int totalGrade;             //总的等级
+    private int standardGrade;          //标准等级
+    private int lineColor;              //线条颜色
     private int horizontalLineLength;   //横向线段长度
     private int verticalLineLength;     //纵向线段长度
     private int lineStrokeWidth;        //线条宽度
@@ -59,40 +60,8 @@ public class FontResizeView extends View {
     private Paint                mPaint;//画笔
     private Line                 mHorizontalLine;   //一条横线
     private Line[]               mVerticalLines;    //n条竖线
-    private GestureDetector      mGestureDetector;//手势检测
-    private OnFontChangeListener onFontChangeListener;
-    GestureDetector.SimpleOnGestureListener gestureListener = new GestureDetector.SimpleOnGestureListener() {
-
-        @Override
-        public boolean onDown(MotionEvent e) {
-            isCoincide = sliderPoint.coincide(e.getX(), e.getY());
-            getParent().requestDisallowInterceptTouchEvent(true);
-            return super.onDown(e);
-        }
-
-        /**
-         * 单击事件
-         */
-        @Override
-        public boolean onSingleTapUp(MotionEvent e) {
-            final Line horizontalLine = mHorizontalLine;
-            float x = e.getX() > horizontalLine.stopX ? horizontalLine.stopX : e.getX();
-            moveSlider(x - horizontalLine.startX, true);
-            return true;
-        }
-
-        @Override
-        public boolean onScroll(MotionEvent e1, MotionEvent e2, float distanceX, float distanceY) {
-            getParent().requestDisallowInterceptTouchEvent(true);
-            if (isCoincide) {
-                float x = sliderPoint.getX();
-                setSliderPointX(x - distanceX, false);
-                postInvalidate();
-                return true;
-            }
-            return super.onScroll(e1, e2, distanceX, distanceY);
-        }
-    };
+    private GestureDetector      mGestureDetector;  //手势检测
+    private OnFontChangeListener onFontChangeListener; //字体size改变监听器
 
     public FontResizeView(Context context) {
         this(context, null);
@@ -155,6 +124,44 @@ public class FontResizeView extends View {
         sliderPoint = new Point(sliderRadius);
         mGestureDetector = new GestureDetector(context, gestureListener);
     }
+
+    GestureDetector.SimpleOnGestureListener gestureListener = new GestureDetector.SimpleOnGestureListener() {
+
+        @Override
+        public boolean onDown(MotionEvent e) {
+            isCoincide = sliderPoint.coincide(e.getX(), e.getY());
+            getParent().requestDisallowInterceptTouchEvent(true);
+            return super.onDown(e);
+        }
+
+        /**
+         * 单击事件
+         */
+        @Override
+        public boolean onSingleTapUp(MotionEvent e) {
+            final Line horizontalLine = mHorizontalLine;
+            float x = e.getX();
+            if (x > horizontalLine.stopX) {
+                x = horizontalLine.stopX;
+            } else if (x < horizontalLine.startX) {
+                x = horizontalLine.startX;
+            }
+            moveSlider(x - horizontalLine.startX, true);
+            return true;
+        }
+
+        @Override
+        public boolean onScroll(MotionEvent e1, MotionEvent e2, float distanceX, float distanceY) {
+            getParent().requestDisallowInterceptTouchEvent(true);
+            if (isCoincide) {
+                float x = sliderPoint.getX();
+                setSliderPointX(x - distanceX, false);
+                postInvalidate();
+                return true;
+            }
+            return super.onScroll(e1, e2, distanceX, distanceY);
+        }
+    };
 
     @Override
     protected void onMeasure(int widthMeasureSpec, int heightMeasureSpec) {
@@ -232,6 +239,12 @@ public class FontResizeView extends View {
         float startY = horizontalLine.startY - dp2px(20);
         canvas.drawText(leftText, horizontalLine.startX - width / 2, startY, mPaint);
 
+        //绘制右边文本
+        mPaint.setColor(rightTextColor);
+        mPaint.setTextSize(maxSize);
+        width = mPaint.measureText(rightText);
+        canvas.drawText(rightText, horizontalLine.stopX - width / 2, startY, mPaint);
+
         //绘制中间文本
         mPaint.setColor(middleTextColor);
         mPaint.setTextSize(standardSize);
@@ -241,12 +254,6 @@ public class FontResizeView extends View {
             startY -= dp2px(7) + standardSize;
         }
         canvas.drawText(middleText, startX, startY, mPaint);
-
-        //绘制右边文本
-        mPaint.setColor(rightTextColor);
-        mPaint.setTextSize(maxSize);
-        width = mPaint.measureText(rightText);
-        canvas.drawText(rightText, horizontalLine.stopX - width / 2, startY, mPaint);
 
         //绘制 滑块
         mPaint.setColor(sliderColor);
@@ -272,7 +279,7 @@ public class FontResizeView extends View {
     /**
      * 移动滑块
      */
-    public void moveSlider(float destX, final boolean isClick) {
+    private void moveSlider(float destX, final boolean isClick) {
         int grade = (int) destX / lineAverageWidth;//目标等级
         float remainder = destX % lineAverageWidth;
         if (remainder > lineAverageWidth / 2) grade++;
@@ -309,7 +316,7 @@ public class FontResizeView extends View {
      *
      * @param onlySetX 是否仅仅更新滑块的位置
      */
-    public void setSliderPointX(float x, boolean onlySetX) {
+    private void setSliderPointX(float x, boolean onlySetX) {
         float horizontalLineStartX = mHorizontalLine.startX;
         float horizontalLineStopX = mHorizontalLine.stopX;
         if (x < horizontalLineStartX) {
@@ -332,14 +339,37 @@ public class FontResizeView extends View {
         }
     }
 
-    public void setFontSize(float fontSize) {
-        fontSize *= getResources().getDisplayMetrics().scaledDensity;
-        sliderGrade = (int) ((fontSize - minSize) / ((maxSize - minSize) / (totalGrade - 1))) + 1;
-        if (sliderGrade < 0) sliderGrade = 1;
-        if (sliderGrade > totalGrade) sliderGrade = totalGrade;
+    /**
+     * @return 返回当前设置的字体大小  单位 ：sp
+     */
+    public float getFontSize() {
+        float size = (maxSize - minSize) / (totalGrade - 1);
+        return (minSize + size * (sliderGrade - 1)) / getResources().getDisplayMetrics().scaledDensity;
     }
 
-    public int dp2px(float dipValue) {
+    /**
+     * 设置当前字体大小
+     *
+     * @param fontSize 字体大小 单位 ：sp
+     */
+    public void setFontSize(float fontSize) {
+        fontSize *= getResources().getDisplayMetrics().scaledDensity;
+        int grade = (int) ((fontSize - minSize) / ((maxSize - minSize) / (totalGrade - 1))) + 1;
+        setSliderGrade(grade);
+    }
+
+    /**
+     * 设置滑块等级
+     *
+     * @param grade 滑块等级
+     */
+    public void setSliderGrade(int grade) {
+        if (grade < 0) grade = 1;
+        if (grade > totalGrade) grade = totalGrade;
+        sliderGrade = grade;
+    }
+
+    private int dp2px(float dipValue) {
         final float scale = getContext().getResources().getDisplayMetrics().density;
         return (int) (dipValue * scale + 0.5f);
     }
@@ -356,11 +386,12 @@ public class FontResizeView extends View {
     }
 
     class Point {
+        //滑块位置及半径
         float x;
         float y;
         float radius;
 
-        int grade;
+        int grade; //滑块等级
 
         Point(float radius) {
             this.radius = radius;
@@ -394,9 +425,7 @@ public class FontResizeView extends View {
             this.grade = grade;
         }
 
-        /**
-         * 是否重合
-         */
+        //判断手指按下的点是否与滑块重合
         boolean coincide(float movingX, float movingY) {
             //开方，如果两点之间的距离小于规定的半径r则定义为重合
             return Math.sqrt((x - movingX) * (x - movingX)
