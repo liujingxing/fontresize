@@ -7,7 +7,9 @@ implementation 'com.ljx.view:fontresize:1.0.1'
 该库里面只有一个类`FontResizeView`，故不用担心库很大。
 
 **效果图**
+
 ![image](https://github.com/liujingxing/FontReszie/blob/master/screenRecord/screen.gif)
+
 ### 属性说明
 
 ```java
@@ -51,7 +53,7 @@ implementation 'com.ljx.view:fontresize:1.0.1'
 ```
 这样配置过后，代码跑起来效果就跟上面的 gif 动图一样
 
-我们把所有属性都加上，看看上面效果
+我们把所有属性都加上，看看效果
 
 ```java
 <com.ljx.view.FontResizeView
@@ -78,5 +80,7 @@ implementation 'com.ljx.view:fontresize:1.0.1'
     app:verticalLineLength="15dp" />
 ```
 效果如下
+
 ![在这里插入图片描述](https://img-blog.csdnimg.cn/20190512142658512.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L2xpdWppbmd4aW5nOTM=,size_16,color_FFFFFF,t_70)
+
 相信以上属性已经能满足大部分场景，如果不能满足您的场景，请提出您的需求，我会第一时间回应您。
