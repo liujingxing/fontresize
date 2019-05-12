@@ -51,6 +51,18 @@ implementation 'com.ljx.view:fontresize:1.0.1'
     app:standardGrade="2"
     app:totalGrade="7" />
 ```
+
+### 设置回调
+```java
+FontResizeView fontResizeView = findViewById(R.id.font_resize_view);
+fontResizeView.setOnFontChangeListener(new OnFontChangeListener() {
+    @Override
+    public void onFontChange(float fontSize) {
+        //字体size改变回调  单位:sp
+    }
+});
+```
+
 这样配置过后，代码跑起来效果就跟上面的 gif 动图一样
 
 我们把所有属性都加上，看看效果
