@@ -12,7 +12,7 @@ implementation 'com.ljx.view:fontresize:1.0.1'
 
 ### 属性说明
 
-```java
+```xml
 <declare-styleable name="FontResizeView">
     <attr name="minSize" format="reference|dimension" /> <!--最小size-->
     <attr name="maxSize" format="reference|dimension" /> <!--最大size-->
@@ -38,7 +38,7 @@ implementation 'com.ljx.view:fontresize:1.0.1'
 </declare-styleable>
 ```
 ### xml配置
-```java
+```xml
 <com.ljx.view.FontResizeView
     android:id="@+id/font_resize_view"
     android:layout_width="match_parent"
@@ -67,7 +67,7 @@ fontResizeView.setOnFontChangeListener(new OnFontChangeListener() {
 
 我们把所有属性都加上，看看效果
 
-```java
+```xml
 <com.ljx.view.FontResizeView
     android:id="@+id/font_resize_view"
     android:layout_width="match_parent"
