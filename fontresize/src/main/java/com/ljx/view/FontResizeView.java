@@ -30,35 +30,35 @@ public class FontResizeView extends View {
     private boolean isCoincide;//是否重合
 
     private int width, height;//FontAdjustView的宽高
-    private float minSize;//最小字体大小
-    private float maxSize;//最大字体大小
-    private float standardSize;//标准字体大小
+    private final float minSize;//最小字体大小
+    private final float maxSize;//最大字体大小
+    private final float standardSize;//标准字体大小
 
     private String leftText;   //左边文本
     private String middleText; //中间文本
     private String rightText;  //右边文本
 
-    private int leftTextColor;     //左边文本颜色
-    private int middleTextColor;   //中间文本颜色
-    private int rightTextColor;    //右边文本颜色
+    private final int leftTextColor;     //左边文本颜色
+    private final int middleTextColor;   //中间文本颜色
+    private final int rightTextColor;    //右边文本颜色
 
-    private int totalGrade;             //总的等级
+    private final int totalGrade;             //总的等级
     private int standardGrade;          //标准等级
-    private int lineColor;              //线条颜色
+    private final int lineColor;              //线条颜色
     private int horizontalLineLength;   //横向线段长度
     private int verticalLineLength;     //纵向线段长度
-    private int lineStrokeWidth;        //线条宽度
+    private final int lineStrokeWidth;        //线条宽度
     private int lineAverageWidth;       //每段水平线条的长度
 
-    private int   sliderGrade;       //滑块等级
-    private int   sliderColor;       //滑块颜色
-    private int   sliderShadowColor; //滑块阴影颜色
-    private Point sliderPoint;       //滑块位置
+    private int sliderGrade;       //滑块等级
+    private final int sliderColor;       //滑块颜色
+    private final int sliderShadowColor; //滑块阴影颜色
+    private final Point sliderPoint;       //滑块位置
 
-    private Paint                mPaint;//画笔
-    private Line                 mHorizontalLine;   //一条横线
-    private Line[]               mVerticalLines;    //n条竖线
-    private GestureDetector      mGestureDetector;  //手势检测
+    private final Paint mPaint;//画笔
+    private final Line mHorizontalLine;   //一条横线
+    private final Line[] mVerticalLines;    //n条竖线
+    private final GestureDetector mGestureDetector;  //手势检测
     private OnFontChangeListener onFontChangeListener; //字体size改变监听器
 
     public FontResizeView(Context context) {
@@ -280,7 +280,7 @@ public class FontResizeView extends View {
     private void moveSlider(float destX, final boolean isClick) {
         int grade = (int) destX / lineAverageWidth;//目标等级
         float remainder = destX % lineAverageWidth;
-        if (remainder > lineAverageWidth / 2) grade++;
+        if (remainder > lineAverageWidth / 2f) grade++;
 
         final int tempGrade = grade;
         int gradeDiffer = Math.abs(sliderPoint.getGrade() - tempGrade);
@@ -427,11 +427,11 @@ public class FontResizeView extends View {
         boolean coincide(float movingX, float movingY) {
             //开方，如果两点之间的距离小于规定的半径r则定义为重合
             return Math.sqrt((x - movingX) * (x - movingX)
-                    + (y - movingY) * (y - movingY)) < radius + dp2px(20);
+                + (y - movingY) * (y - movingY)) < radius + dp2px(20);
         }
     }
 
-    class Line {
+    static class Line {
 
         float startX;
         float startY;
