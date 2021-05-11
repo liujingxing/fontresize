@@ -12,7 +12,7 @@ implementation 'com.ljx.view:fontresize:1.0.1'
 
 ### 属性说明
 
-```java
+```xml
 <declare-styleable name="FontResizeView">
     <attr name="minSize" format="reference|dimension" /> <!--最小size-->
     <attr name="maxSize" format="reference|dimension" /> <!--最大size-->
@@ -38,7 +38,7 @@ implementation 'com.ljx.view:fontresize:1.0.1'
 </declare-styleable>
 ```
 ### xml配置
-```java
+```xml
 <com.ljx.view.FontResizeView
     android:id="@+id/font_resize_view"
     android:layout_width="match_parent"
@@ -67,7 +67,7 @@ fontResizeView.setOnFontChangeListener(new OnFontChangeListener() {
 
 我们把所有属性都加上，看看效果
 
-```java
+```xml
 <com.ljx.view.FontResizeView
     android:id="@+id/font_resize_view"
     android:layout_width="match_parent"
@@ -96,3 +96,20 @@ fontResizeView.setOnFontChangeListener(new OnFontChangeListener() {
 ![在这里插入图片描述](https://img-blog.csdnimg.cn/20190512142658512.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L2xpdWppbmd4aW5nOTM=,size_16,color_FFFFFF,t_70)
 
 相信以上属性已经能满足大部分场景，如果不能满足您的场景，请提出您的需求，我会第一时间回应您。
+
+# Licenses
+```
+Copyright 2019 liujingxing
+
+Licensed under the Apache License, Version 2.0 (the "License");
+you may not use this file except in compliance with the License.
+You may obtain a copy of the License at
+
+   http://www.apache.org/licenses/LICENSE-2.0
+
+Unless required by applicable law or agreed to in writing, software
+distributed under the License is distributed on an "AS IS" BASIS,
+WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+See the License for the specific language governing permissions and
+limitations under the License.
+```
