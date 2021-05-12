@@ -1,7 +1,19 @@
 [![](https://jitpack.io/v/liujingxing/fontresize.svg)](https://jitpack.io/#liujingxing/fontresize)
+
 FontResize是一个仿微信/支付宝 字体大小 调整控件的库
 
 **gradle依赖**
+
+将`jitpack`添加到项目的`build.gradle`文件中，如下：
+```java
+allprojects {
+    repositories {
+        maven { url "https://jitpack.io" }
+    }
+}
+```
+`注：FontResize 1.1.0版本起，已全面从JCenter迁移至jitpack`
+
 ```java
 com.github.liujingxing:fontresize:1.1.0'
 ```
